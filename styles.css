@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-image: url(https://cdn.myportfolio.com/95414602-2cfc-4db8-b0e5-8f8f0ab0f701/2f6f6e03-8a64-4704-9922-a750c7eb4935.jpg?h=a36c1261925cf3ce0c7fb5b2d81a57f3);
+  background-repeat: no-repeat;
+
+  background-size: cover;
+  color: rgb(217, 252, 255);
+  text-shadow: 0.2rem 0.2rem 0.3rem black, -0.2rem -0.2rem 0.3rem black,
+    -0.2rem 0.2rem 0.3rem black, 0.2rem -0.2rem 0.3rem black;
+}
+h2 {
+  margin-top: 3rem;
+  font-size: 4rem;
+}
+#weather {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+p {
+  margin-top: 16rem;
+  font-size: 4rem;
+  font-weight: 900;
+}
+img {
+  height: 20rem;
+  filter: drop-shadow(0.2rem 0.2rem 0.5rem black);
+}
