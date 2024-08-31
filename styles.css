@@ -23,13 +23,14 @@ h2 {
   display: flex;
   flex-direction: column;
   text-align: center;
+  gap: 15rem;
 }
 p {
-  margin-top: 16rem;
+
   font-size: 4rem;
   font-weight: 900;
 }
 img {
-  height: 20rem;
-  filter: drop-shadow(0.2rem 0.2rem 0.5rem black);
+  height: 30rem;
+  filter: drop-shadow(0.2rem 0.2rem 0.5rem black) opacity(90%);
 }
