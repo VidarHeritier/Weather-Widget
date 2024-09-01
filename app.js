@@ -101,8 +101,9 @@ function displayForecast(data) {
 
   function getWeekdayName(dateString) {
     const date = new Date(dateString);
-    const options = { weekday: 'long' };
-    return new Intl.DateTimeFormat('en-US', options).format(date);
+  const options = { weekday: 'long' };
+  const norwegianWeekday = new Intl.DateTimeFormat('no-NO', options).format(date);
+  return norwegianWeekday.charAt(0).toUpperCase() + norwegianWeekday.slice(1);
   }
 
   const today = new Date().toISOString().split('T')[0];
