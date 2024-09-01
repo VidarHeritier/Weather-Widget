@@ -9,7 +9,6 @@ body {
   align-content: center;
   background-image: url(https://cdn.myportfolio.com/95414602-2cfc-4db8-b0e5-8f8f0ab0f701/2f6f6e03-8a64-4704-9922-a750c7eb4935.jpg?h=a36c1261925cf3ce0c7fb5b2d81a57f3);
   background-repeat: no-repeat;
-
   background-size: cover;
   color: rgb(217, 252, 255);
   text-shadow: 0.2rem 0.2rem 0.3rem black, -0.2rem -0.2rem 0.3rem black,
@@ -40,9 +39,11 @@ h2 {
 }
 
 #forecast-container{
-  margin-block: 15rem;
+  margin-block: 12rem;
 }
-h3{margin-left: 5rem;
+h3{
+  font-size: 2rem;
+  text-align: center;
   text-shadow: 0.05rem 0.05rem 0.1rem black, -0.05rem -0.05rem 0.1rem black,
   -0.05rem 0.05rem 0.1rem black, 0.05rem -0.05rem 0.1rem black;}
 #forecast-row {
@@ -57,6 +58,83 @@ h3{margin-left: 5rem;
   filter: drop-shadow(0.05rem 0.05rem 0.1rem black) opacity(90%);
 }
 #forecast-row p {
+  font-size: 1.5rem;
   text-shadow: 0.05rem 0.05rem 0.1rem black, -0.05rem -0.05rem 0.1rem black,
     -0.05rem 0.05rem 0.1rem black, 0.05rem -0.05rem 0.1rem black;
+}
+
+/* Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  h2 {
+    margin-top: 1rem;
+    font-size: 3rem;
+  }
+#weather {
+  gap: 3rem;
+}
+  #weather p {
+    font-size: 2.5rem;
+  }
+
+  #weather img {
+    height: 20rem;
+  }
+
+  #forecast-container {
+    margin-block: 6rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  #forecast-row {
+    
+    display: grid;
+    grid-template-columns: repeat(3,4rem);  
+    grid-template-rows: repeat(3,4rem); 
+    gap: 3rem;
+    margin-block: 1rem;
+  }
+
+  #forecast-row img {
+    height: 4rem;
+  }
+
+  #forecast-row p {
+    font-size: 1.2rem;
+  }
+}
+
+/* Smaller Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  #weather p {
+    font-size: 2rem;
+  }
+
+  #weather img {
+    height: 15rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  #forecast-row img {
+    height: 3rem;
+  }
+
+  #forecast-row p {
+    font-size: 1rem;
+  }
 }
