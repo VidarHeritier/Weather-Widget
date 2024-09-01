@@ -15,6 +15,10 @@ body {
   text-shadow: 0.2rem 0.2rem 0.3rem black, -0.2rem -0.2rem 0.3rem black,
     -0.2rem 0.2rem 0.3rem black, 0.2rem -0.2rem 0.3rem black;
 }
+main{
+  display: flex;
+  flex-direction: column;
+}
 h2 {
   margin-top: 3rem;
   font-size: 4rem;
@@ -23,14 +27,36 @@ h2 {
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: 15rem;
+  gap: 5rem;
 }
-p {
+#weather p {
 
   font-size: 4rem;
   font-weight: 900;
 }
-img {
+#weather img {
   height: 30rem;
   filter: drop-shadow(0.2rem 0.2rem 0.5rem black) opacity(90%);
+}
+
+#forecast-container{
+  margin-block: 15rem;
+}
+h3{margin-left: 5rem;
+  text-shadow: 0.05rem 0.05rem 0.1rem black, -0.05rem -0.05rem 0.1rem black,
+  -0.05rem 0.05rem 0.1rem black, 0.05rem -0.05rem 0.1rem black;}
+#forecast-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10rem;
+  margin-block: 2rem;
+ 
+}
+#forecast-row img{
+  height: 6rem;
+  filter: drop-shadow(0.05rem 0.05rem 0.1rem black) opacity(90%);
+}
+#forecast-row p {
+  text-shadow: 0.05rem 0.05rem 0.1rem black, -0.05rem -0.05rem 0.1rem black,
+    -0.05rem 0.05rem 0.1rem black, 0.05rem -0.05rem 0.1rem black;
 }
