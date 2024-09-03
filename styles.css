@@ -14,7 +14,7 @@ body {
   text-shadow: 0.2rem 0.2rem 0.3rem black, -0.2rem -0.2rem 0.3rem black,
     -0.2rem 0.2rem 0.3rem black, 0.2rem -0.2rem 0.3rem black;
 }
-main{
+main {
   display: flex;
   flex-direction: column;
 }
@@ -29,7 +29,6 @@ h2 {
   gap: 5rem;
 }
 #weather p {
-
   font-size: 4rem;
   font-weight: 900;
 }
@@ -38,22 +37,22 @@ h2 {
   filter: drop-shadow(0.2rem 0.2rem 0.5rem black) opacity(90%);
 }
 
-#forecast-container{
+#forecast-container {
   margin-block: 12rem;
 }
-h3{
+h3 {
   font-size: 2rem;
   text-align: center;
   text-shadow: 0.05rem 0.05rem 0.1rem black, -0.05rem -0.05rem 0.1rem black,
-  -0.05rem 0.05rem 0.1rem black, 0.05rem -0.05rem 0.1rem black;}
+    -0.05rem 0.05rem 0.1rem black, 0.05rem -0.05rem 0.1rem black;
+}
 #forecast-row {
   display: flex;
   justify-content: space-between;
   gap: 10rem;
   margin-block: 2rem;
- 
 }
-#forecast-row img{
+#forecast-row img {
   height: 6rem;
   filter: drop-shadow(0.05rem 0.05rem 0.1rem black) opacity(90%);
 }
@@ -69,16 +68,15 @@ h3{
     flex-direction: column;
     padding: 1rem;
     text-align: center;
-    height: 100svh;
   }
 
   h2 {
     margin-top: 1rem;
     font-size: 3rem;
   }
-#weather {
-  gap: 3rem;
-}
+  #weather {
+    gap: 3rem;
+  }
   #weather p {
     font-size: 2.5rem;
   }
@@ -96,10 +94,9 @@ h3{
   }
 
   #forecast-row {
-    
     display: grid;
-    grid-template-columns: repeat(3,4rem);  
-    grid-template-rows: repeat(3,4rem); 
+    grid-template-columns: repeat(3, 4rem);
+    grid-template-rows: repeat(3, 4rem);
     gap: 3rem;
     margin-block: 1rem;
   }
