@@ -39,7 +39,7 @@ async function fetchWeather() {
 
     tempEl.textContent = `${currentTemp} °C`;
     iconEl.src = weatherIconUrl;
-    iconEl.alt = `Current weather: ${description}`;
+    iconEl.alt = `Været i dag: ${description}`;
   }
 
   updateWeather();
