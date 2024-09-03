@@ -1,4 +1,3 @@
-
 const weatherAPI =
   "https://api.met.no/weatherapi/locationforecast/2.0/?lat=60.39&lon=5.33&altitude=10";
 
@@ -36,13 +35,129 @@ async function fetchWeather() {
     const tempEl = document.getElementById("temp");
     const iconEl = document.getElementById("weather-icon");
 
+    const description = getWeatherDescription(weatherCode);
+
     tempEl.textContent = `${currentTemp} °C`;
     iconEl.src = weatherIconUrl;
+    iconEl.alt = `Current weather: ${description}`;
   }
 
   updateWeather();
 
   displayForecast(data);
+}
+
+function getWeatherDescription(weatherCode) {
+  const weatherDescriptions = {
+    clearsky_day: "Clear sky during the day",
+    clearsky_night: "Clear sky during the night",
+    clearsky_polartwilight: "Clear sky during polar twilight",
+    cloudy: "Cloudy",
+    fair_day: "Fair weather during the day",
+    fair_night: "Fair weather during the night",
+    fair_polartwilight: "Fair weather during polar twilight",
+    fog: "Foggy",
+    heavyrain: "Heavy rain",
+    heavyrainandthunder: "Heavy rain and thunder",
+    heavyrainshowers_day: "Heavy rain showers during the day",
+    heavyrainshowers_night: "Heavy rain showers during the night",
+    heavyrainshowers_polartwilight: "Heavy rain showers during polar twilight",
+    heavyrainshowersandthunder_day:
+      "Heavy rain showers and thunder during the day",
+    heavyrainshowersandthunder_night:
+      "Heavy rain showers and thunder during the night",
+    heavyrainshowersandthunder_polartwilight:
+      "Heavy rain showers and thunder during polar twilight",
+    heavysleet: "Heavy sleet",
+    heavysleetandthunder: "Heavy sleet and thunder",
+    heavysleetshowers_day: "Heavy sleet showers during the day",
+    heavysleetshowers_night: "Heavy sleet showers during the night",
+    heavysleetshowers_polartwilight:
+      "Heavy sleet showers during polar twilight",
+    heavysleetshowersandthunder_day:
+      "Heavy sleet showers and thunder during the day",
+    heavysleetshowersandthunder_night:
+      "Heavy sleet showers and thunder during the night",
+    heavysleetshowersandthunder_polartwilight:
+      "Heavy sleet showers and thunder during polar twilight",
+    heavysnow: "Heavy snow",
+    heavysnowandthunder: "Heavy snow and thunder",
+    heavysnowshowers_day: "Heavy snow showers during the day",
+    heavysnowshowers_night: "Heavy snow showers during the night",
+    heavysnowshowers_polartwilight: "Heavy snow showers during polar twilight",
+    heavysnowshowersandthunder_day:
+      "Heavy snow showers and thunder during the day",
+    heavysnowshowersandthunder_night:
+      "Heavy snow showers and thunder during the night",
+    heavysnowshowersandthunder_polartwilight:
+      "Heavy snow showers and thunder during polar twilight",
+    lightrain: "Light rain",
+    lightrainandthunder: "Light rain and thunder",
+    lightrainshowers_day: "Light rain showers during the day",
+    lightrainshowers_night: "Light rain showers during the night",
+    lightrainshowers_polartwilight: "Light rain showers during polar twilight",
+    lightrainshowersandthunder_day:
+      "Light rain showers and thunder during the day",
+    lightrainshowersandthunder_night:
+      "Light rain showers and thunder during the night",
+    lightrainshowersandthunder_polartwilight:
+      "Light rain showers and thunder during polar twilight",
+    lightsleet: "Light sleet",
+    lightsleetandthunder: "Light sleet and thunder",
+    lightsleetshowers_day: "Light sleet showers during the day",
+    lightsleetshowers_night: "Light sleet showers during the night",
+    lightsleetshowers_polartwilight:
+      "Light sleet showers during polar twilight",
+    lightsnow: "Light snow",
+    lightsnowandthunder: "Light snow and thunder",
+    lightsnowshowers_day: "Light snow showers during the day",
+    lightsnowshowers_night: "Light snow showers during the night",
+    lightsnowshowers_polartwilight: "Light snow showers during polar twilight",
+    lightssleetshowersandthunder_day:
+      "Light sleet showers and thunder during the day",
+    lightssleetshowersandthunder_night:
+      "Light sleet showers and thunder during the night",
+    lightssleetshowersandthunder_polartwilight:
+      "Light sleet showers and thunder during polar twilight",
+    lightssnowshowersandthunder_day:
+      "Light snow showers and thunder during the day",
+    lightssnowshowersandthunder_night:
+      "Light snow showers and thunder during the night",
+    lightssnowshowersandthunder_polartwilight:
+      "Light snow showers and thunder during polar twilight",
+    partlycloudy_day: "Partly cloudy during the day",
+    partlycloudy_night: "Partly cloudy during the night",
+    partlycloudy_polartwilight: "Partly cloudy during polar twilight",
+    rain: "Rain",
+    rainandthunder: "Rain and thunder",
+    rainshowers_day: "Rain showers during the day",
+    rainshowers_night: "Rain showers during the night",
+    rainshowers_polartwilight: "Rain showers during polar twilight",
+    rainshowersandthunder_day: "Rain showers and thunder during the day",
+    rainshowersandthunder_night: "Rain showers and thunder during the night",
+    rainshowersandthunder_polartwilight:
+      "Rain showers and thunder during polar twilight",
+    sleet: "Sleet",
+    sleetandthunder: "Sleet and thunder",
+    sleetshowers_day: "Sleet showers during the day",
+    sleetshowers_night: "Sleet showers during the night",
+    sleetshowers_polartwilight: "Sleet showers during polar twilight",
+    sleetshowersandthunder_day: "Sleet showers and thunder during the day",
+    sleetshowersandthunder_night: "Sleet showers and thunder during the night",
+    sleetshowersandthunder_polartwilight:
+      "Sleet showers and thunder during polar twilight",
+    snow: "Snow",
+    snowandthunder: "Snow and thunder",
+    snowshowers_day: "Snow showers during the day",
+    snowshowers_night: "Snow showers during the night",
+    snowshowers_polartwilight: "Snow showers during polar twilight",
+    snowshowersandthunder_day: "Snow showers and thunder during the day",
+    snowshowersandthunder_night: "Snow showers and thunder during the night",
+    snowshowersandthunder_polartwilight:
+      "Snow showers and thunder during polar twilight",
+  };
+
+  return weatherDescriptions[weatherCode] || "Unknown weather";
 }
 
 function displayForecast(data) {
@@ -55,40 +170,19 @@ function displayForecast(data) {
 
   function getWeekdayName(dateString) {
     const date = new Date(dateString);
-  const options = { weekday: 'long' };
-  const norwegianWeekday = new Intl.DateTimeFormat('no-NO', options).format(date);
-  return norwegianWeekday.charAt(0).toUpperCase() + norwegianWeekday.slice(1);
+    const options = { weekday: "long" };
+    const norwegianWeekday = new Intl.DateTimeFormat("no-NO", options).format(
+      date
+    );
+    return norwegianWeekday.charAt(0).toUpperCase() + norwegianWeekday.slice(1);
   }
 
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split("T")[0];
 
   for (let i = 0; i < timeseries.length; i++) {
     const forecast = timeseries[i];
     const forecastDate = new Date(forecast.time);
-    const dateStr = forecastDate.toISOString().split('T')[0];
-
-    const weatherDescriptions = {
-      "clearsky": "Clear sky",
-      "cloudy": "Cloudy",
-      "fair": "Fair",
-      "fog": "Foggy",
-      "heavyrain": "Heavy rain",
-      "heavyrainandthunder": "Heavy rain and thunder",
-      "heavyrainshowers": "Heavy rain showers",
-      "heavysleet": "Heavy sleet",
-      "heavysnow": "Heavy snow",
-      "lightrain": "Light rain",
-      "lightrainandthunder": "Light rain and thunder",
-      "lightrainshowers": "Light rain showers",
-      "lightsleet": "Light sleet",
-      "lightsnow": "Light snow",
-      "partlycloudy": "Partly cloudy",
-      "rain": "Rain",
-      "rainandthunder": "Rain and thunder",
-      "sleet": "Sleet",
-      "snow": "Snow",
-      "snowandthunder": "Snow and thunder",
-    };
+    const dateStr = forecastDate.toISOString().split("T")[0];
 
     if (dateStr <= today) {
       continue;
@@ -116,7 +210,8 @@ function displayForecast(data) {
       if (forecastIconUrl) {
         const icon = document.createElement("img");
         icon.src = forecastIconUrl;
-        icon.alt = `${getWeekdayName(forecastDate)}: ${weatherDescriptions}`;
+        const description = getWeatherDescription(forecastCode);
+        icon.alt = `${getWeekdayName(forecastDate)}: ${description}`;
         forecastItem.appendChild(icon);
       }
 
@@ -130,8 +225,5 @@ function displayForecast(data) {
     }
   }
 }
-
-
-
 
 fetchWeather();
