@@ -144,6 +144,7 @@ function displayForecast(data) {
 
   const timeseries = data.properties.timeseries;
   const forecastDays = [];
+  const middayForecasts = {};
 
   function getWeekdayName(dateString) {
     const date = new Date(dateString);
@@ -167,39 +168,53 @@ function displayForecast(data) {
 
     if (!forecastDays.includes(dateStr)) {
       forecastDays.push(dateStr);
-
-      const forecastTemp = forecast.data.instant.details.air_temperature;
-      const forecastCode = forecast.data.next_6_hours
-        ? forecast.data.next_6_hours.summary.symbol_code
-        : null;
-
-      const forecastIconUrl = forecastCode
-        ? `https://raw.githubusercontent.com/metno/weathericons/main/weather/svg/${forecastCode}.svg`
-        : "";
-
-      const forecastItem = document.createElement("div");
-      forecastItem.style.textAlign = "center";
-
-      const weekday = document.createElement("p");
-      weekday.textContent = getWeekdayName(forecastDate);
-      forecastItem.appendChild(weekday);
-
-      if (forecastIconUrl) {
-        const icon = document.createElement("img");
-        icon.src = forecastIconUrl;
-        const description = getWeatherDescription(forecastCode);
-        icon.alt = `${getWeekdayName(forecastDate)}: ${description}`;
-        forecastItem.appendChild(icon);
+      middayForecasts[dateStr] = forecast;
+    } else {
+      const currentMidday = new Date(middayForecasts[dateStr].time);
+      if (
+        Math.abs(forecastDate.getHours() - 12) <
+        Math.abs(currentMidday.getHours() - 12)
+      ) {
+        middayForecasts[dateStr] = forecast;
       }
-
-      const temp = document.createElement("p");
-      temp.textContent = `${forecastTemp} °C`;
-      forecastItem.appendChild(temp);
-
-      forecastRow.appendChild(forecastItem);
-
-      if (forecastDays.length === 6) break;
     }
+
+    if (forecastDays.length === 6) break;
+  }
+
+  for (const dateStr in middayForecasts) {
+    const forecast = middayForecasts[dateStr];
+    const forecastDate = new Date(forecast.time);
+
+    const forecastTemp = forecast.data.instant.details.air_temperature;
+    const forecastCode = forecast.data.next_6_hours
+      ? forecast.data.next_6_hours.summary.symbol_code
+      : null;
+
+    const forecastIconUrl = forecastCode
+      ? `https://raw.githubusercontent.com/metno/weathericons/main/weather/svg/${forecastCode}.svg`
+      : "";
+
+    const forecastItem = document.createElement("div");
+    forecastItem.style.textAlign = "center";
+
+    const weekday = document.createElement("p");
+    weekday.textContent = getWeekdayName(forecastDate);
+    forecastItem.appendChild(weekday);
+
+    if (forecastIconUrl) {
+      const icon = document.createElement("img");
+      icon.src = forecastIconUrl;
+      const description = getWeatherDescription(forecastCode);
+      icon.alt = `${getWeekdayName(forecastDate)}: ${description}`;
+      forecastItem.appendChild(icon);
+    }
+
+    const temp = document.createElement("p");
+    temp.textContent = `${forecastTemp} °C`;
+    forecastItem.appendChild(temp);
+
+    forecastRow.appendChild(forecastItem);
   }
 }
 
