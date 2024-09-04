@@ -51,9 +51,10 @@ h3 {
 #forecast-row {
   display: flex;
   justify-content: space-between;
-  gap: 10rem;
+  gap: 8rem;
   margin-block: 2rem;
 }
+
 #forecast-row img {
   height: 6rem;
   filter: drop-shadow(0.05rem 0.05rem 0.1rem black) opacity(90%);
