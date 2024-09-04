@@ -205,6 +205,8 @@ function displayForecast(data) {
     forecastItem.appendChild(temp);
 
     forecastRow.appendChild(forecastItem);
+
+    console.log(forecastDate);
   }
 }
 
