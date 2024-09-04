@@ -143,8 +143,7 @@ function displayForecast(data) {
   forecastRow.innerHTML = "";
 
   const timeseries = data.properties.timeseries;
-  const forecastDays = [];
-  const middayForecasts = {};
+  const forecastDays = {};
 
   function getWeekdayName(dateString) {
     const date = new Date(dateString);
@@ -159,31 +158,22 @@ function displayForecast(data) {
 
   for (let i = 0; i < timeseries.length; i++) {
     const forecast = timeseries[i];
-    const forecastDate = new Date(forecast.time);
-    const dateStr = forecastDate.toISOString().split("T")[0];
+    const forecastTime = forecast.time;
+    const forecastDate = forecastTime.split("T")[0];
 
-    if (dateStr <= today) {
+    if (forecastDate <= today) {
       continue;
     }
 
-    if (!forecastDays.includes(dateStr)) {
-      forecastDays.push(dateStr);
-      middayForecasts[dateStr] = forecast;
-    } else {
-      const currentMidday = new Date(middayForecasts[dateStr].time);
-      if (
-        Math.abs(forecastDate.getHours() - 12) <
-        Math.abs(currentMidday.getHours() - 12)
-      ) {
-        middayForecasts[dateStr] = forecast;
-      }
+    if (forecastTime.includes("T12:00:00Z")) {
+      forecastDays[forecastDate] = forecast;
     }
 
-    if (forecastDays.length === 6) break;
+    if (Object.keys(forecastDays).length === 6) break;
   }
 
-  for (const dateStr in middayForecasts) {
-    const forecast = middayForecasts[dateStr];
+  for (const dateStr in forecastDays) {
+    const forecast = forecastDays[dateStr];
     const forecastDate = new Date(forecast.time);
 
     const forecastTemp = forecast.data.instant.details.air_temperature;
