@@ -28,13 +28,14 @@ h2 {
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: 3rem;
+  gap: 5rem;
 }
 #weather p {
   font-size: 4rem;
   font-weight: 900;
 }
 #weather img {
+  margin-top: -2rem;
   height: 15rem;
   filter: drop-shadow(0.2rem 0.2rem 0.5rem black) opacity(90%);
 }
